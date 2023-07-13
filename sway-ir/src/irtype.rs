@@ -411,25 +411,39 @@ impl Type {
 
     pub fn size_in_bytes(&self, context: &Context) -> u64 {
         match self.get_content(context) {
-            TypeContent::Unit | TypeContent::Bool | TypeContent::Pointer(_) => 8,
-            TypeContent::Uint(bits) => (*bits as u64) / 8,
+            TypeContent::Uint(8) | TypeContent::Bool | TypeContent::Unit => 1,
+            // All integers larger than a byte are words since FuelVM only has memory operations on those two units
+            TypeContent::Uint(16)
+            | TypeContent::Uint(32)
+            | TypeContent::Uint(64)
+            | TypeContent::Pointer(_) => 8,
+            TypeContent::Uint(256) => 32,
+            TypeContent::Uint(_) => unreachable!(),
             TypeContent::Slice => 16,
             TypeContent::B256 => 32,
             TypeContent::StringSlice => 16,
             TypeContent::StringArray(n) => super::size_bytes_round_up_to_word_alignment!(*n),
             TypeContent::Array(el_ty, cnt) => cnt * el_ty.size_in_bytes(context),
             TypeContent::Struct(field_tys) => {
-                // Sum up all the field sizes.
+                // Sum up all the field sizes, aligned to 8 bytes.
                 field_tys
                     .iter()
-                    .map(|field_ty| field_ty.size_in_bytes(context))
+                    .map(|field_ty| {
+                        super::size_bytes_round_up_to_word_alignment!(
+                            field_ty.size_in_bytes(context)
+                        )
+                    })
                     .sum()
             }
             TypeContent::Union(field_tys) => {
                 // Find the max size for field sizes.
                 field_tys
                     .iter()
-                    .map(|field_ty| field_ty.size_in_bytes(context))
+                    .map(|field_ty| {
+                        super::size_bytes_round_up_to_word_alignment!(
+                            field_ty.size_in_bytes(context)
+                        )
+                    })
                     .max()
                     .unwrap_or(0)
             }

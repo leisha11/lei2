@@ -195,11 +195,11 @@ pub(crate) enum VirtualOp {
     BLOB(VirtualImmediate24),
     DataSectionOffsetPlaceholder,
     DataSectionRegisterLoadPlaceholder,
-    // LWDataId takes a virtual register and a DataId, which points to a labeled piece
+    // LoadDataId takes a virtual register and a DataId, which points to a labeled piece
     // of data in the data section. Note that the ASM op corresponding to a LW is
     // subtly complex: $rB is in bytes and points to some mem address. The immediate
     // third argument is a _word_ offset from that byte address.
-    LWDataId(VirtualRegister, DataId),
+    LoadDataId(VirtualRegister, DataId),
     Undefined,
 }
 
@@ -312,7 +312,7 @@ impl VirtualOp {
                 &VirtualRegister::Constant(ConstantRegister::DataSectionStart),
                 &VirtualRegister::Constant(ConstantRegister::InstructionStart),
             ],
-            LWDataId(r1, _i) => vec![r1],
+            LoadDataId(r1, _i) => vec![r1],
             Undefined => vec![],
         })
         .into_iter()
@@ -427,7 +427,7 @@ impl VirtualOp {
             DataSectionRegisterLoadPlaceholder => vec![&VirtualRegister::Constant(
                 ConstantRegister::InstructionStart,
             )],
-            LWDataId(_r1, _i) => vec![],
+            LoadDataId(_r1, _i) => vec![],
             Undefined => vec![],
         })
         .into_iter()
@@ -539,7 +539,7 @@ impl VirtualOp {
 
             /* Non-VM Instructions */
             BLOB(_imm) => vec![],
-            LWDataId(r1, _i) => vec![r1],
+            LoadDataId(r1, _i) => vec![r1],
             DataSectionOffsetPlaceholder => vec![],
             DataSectionRegisterLoadPlaceholder => vec![&VirtualRegister::Constant(
                 ConstantRegister::DataSectionStart,
@@ -959,7 +959,7 @@ impl VirtualOp {
             BLOB(i) => Self::BLOB(i.clone()),
             DataSectionOffsetPlaceholder => Self::DataSectionOffsetPlaceholder,
             DataSectionRegisterLoadPlaceholder => Self::DataSectionRegisterLoadPlaceholder,
-            LWDataId(r1, i) => Self::LWDataId(update_reg(reg_to_reg_map, r1), i.clone()),
+            LoadDataId(r1, i) => Self::LoadDataId(update_reg(reg_to_reg_map, r1), i.clone()),
             Undefined => Self::Undefined,
         }
     }
@@ -1408,8 +1408,8 @@ impl VirtualOp {
             DataSectionRegisterLoadPlaceholder => {
                 AllocatedOpcode::DataSectionRegisterLoadPlaceholder
             }
-            LWDataId(reg1, label) => {
-                AllocatedOpcode::LWDataId(map_reg(&mapping, reg1), label.clone())
+            LoadDataId(reg1, label) => {
+                AllocatedOpcode::LoadDataId(map_reg(&mapping, reg1), label.clone())
             }
             Undefined => AllocatedOpcode::Undefined,
         }

@@ -17,7 +17,7 @@ fuel-core-client = { version = "0.20", default-features = false }
 fuel-vm = "0.35"
 
 # Dependencies from the `fuels-rs` repository:
-fuels = { version = "0.45", features = ["fuel-core-lib"] }
+fuels = { git = "https://github.com/FuelLabs/fuels-rs.git", branch = "IGI-111/int-mem-repr", features = ["fuel-core-lib"] }
 
 hex = "0.4.3"
 rand = "0.8"

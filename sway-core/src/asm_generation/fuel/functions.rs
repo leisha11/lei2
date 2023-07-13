@@ -611,11 +611,7 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
     fn alloc_locals(
         &mut self,
         function: Function,
-    ) -> (
-        u64,
-        virtual_register::VirtualRegister,
-        Vec<(u64, u64, DataId)>,
-    ) {
+    ) -> (u64, virtual_register::VirtualRegister, Vec<InitMutVars>) {
         // If they're immutable and have a constant initialiser then they go in the data section.
         //
         // Otherwise they go in runtime allocated space, either a register or on the stack.
@@ -632,6 +628,7 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
                         self.context,
                         constant,
                         None,
+                        None,
                     ));
                     self.ptr_map.insert(*ptr, Storage::Data(data_id));
                     (stack_base, init_mut_vars)
@@ -639,7 +636,8 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
                     self.ptr_map.insert(*ptr, Storage::Stack(stack_base));
 
                     let ptr_ty = ptr.get_inner_type(self.context);
-                    let var_size = match ptr_ty.get_content(self.context) {
+                    let var_byte_size = ir_type_size_in_bytes(self.context, &ptr_ty);
+                    let var_word_size = match ptr_ty.get_content(self.context) {
                         TypeContent::Uint(256) => 4,
                         TypeContent::Unit
                         | TypeContent::Bool
@@ -659,12 +657,18 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
                             self.context,
                             constant,
                             None,
+                            None,
                         ));
 
-                        init_mut_vars.push((stack_base, var_size, data_id));
+                        init_mut_vars.push(InitMutVars {
+                            stack_base,
+                            var_word_size,
+                            var_byte_size,
+                            data_id,
+                        });
                     }
 
-                    (stack_base + var_size, init_mut_vars)
+                    (stack_base + var_word_size, init_mut_vars)
                 }
             },
         );
@@ -698,14 +702,20 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
         (locals_size, locals_base_reg, init_mut_vars): (
             u64,
             virtual_register::VirtualRegister,
-            Vec<(u64, u64, DataId)>,
+            Vec<InitMutVars>,
         ),
     ) {
         // Initialise that stack variables which require it.
-        for (var_stack_offs, var_word_size, var_data_id) in init_mut_vars {
+        for InitMutVars {
+            stack_base: var_stack_offs,
+            var_word_size,
+            var_byte_size,
+            data_id: var_data_id,
+        } in init_mut_vars
+        {
             // Load our initialiser from the data section.
             self.cur_bytecode.push(Op {
-                opcode: Either::Left(VirtualOp::LWDataId(
+                opcode: Either::Left(VirtualOp::LoadDataId(
                     VirtualRegister::Constant(ConstantRegister::Scratch),
                     var_data_id,
                 )),
@@ -756,15 +766,27 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
 
             if var_word_size == 1 {
                 // Initialise by value.
-                self.cur_bytecode.push(Op {
-                    opcode: Either::Left(VirtualOp::SW(
-                        dst_reg,
-                        VirtualRegister::Constant(ConstantRegister::Scratch),
-                        VirtualImmediate12 { value: 0 },
-                    )),
-                    comment: "store initializer to local variable".to_owned(),
-                    owning_span: None,
-                });
+                if var_byte_size == 1 {
+                    self.cur_bytecode.push(Op {
+                        opcode: Either::Left(VirtualOp::SB(
+                            dst_reg,
+                            VirtualRegister::Constant(ConstantRegister::Scratch),
+                            VirtualImmediate12 { value: 0 },
+                        )),
+                        comment: "store initializer to local variable".to_owned(),
+                        owning_span: None,
+                    });
+                } else {
+                    self.cur_bytecode.push(Op {
+                        opcode: Either::Left(VirtualOp::SW(
+                            dst_reg,
+                            VirtualRegister::Constant(ConstantRegister::Scratch),
+                            VirtualImmediate12 { value: 0 },
+                        )),
+                        comment: "store initializer to local variable".to_owned(),
+                        owning_span: None,
+                    });
+                }
             } else {
                 // Initialise by reference.
                 let var_byte_size = var_word_size * 8;
@@ -806,4 +828,11 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
     pub(super) fn locals_base_reg(&self) -> &VirtualRegister {
         &self.locals_ctxs.last().expect("No locals").1
     }
+}
+
+struct InitMutVars {
+    stack_base: u64,
+    var_word_size: u64,
+    var_byte_size: u64,
+    data_id: DataId,
 }

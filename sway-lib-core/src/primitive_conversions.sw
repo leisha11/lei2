@@ -51,35 +51,35 @@ impl u64 {
 
         asm(input: self, off: 0xFF, i: 0x8, j: 0x10, k: 0x18, l: 0x20, m: 0x28, n: 0x30, o: 0x38, output: output, r1) {
             and  r1 input off;
-            sw  output r1 i0;
+            sb  output r1 i0;
 
             srl  r1 input i;
             and  r1 r1 off;
-            sw  output r1 i1;
+            sb  output r1 i1;
 
             srl  r1 input j;
             and  r1 r1 off;
-            sw  output r1 i2;
+            sb  output r1 i2;
 
             srl  r1 input k;
             and  r1 r1 off;
-            sw  output r1 i3;
+            sb  output r1 i3;
 
             srl  r1 input l;
             and  r1 r1 off;
-            sw  output r1 i4;
+            sb  output r1 i4;
 
             srl  r1 input m;
             and  r1 r1 off;
-            sw  output r1 i5;
+            sb  output r1 i5;
 
             srl  r1 input n;
             and  r1 r1 off;
-            sw  output r1 i6;
+            sb  output r1 i6;
 
             srl  r1 input o;
             and  r1 r1 off;
-            sw  output r1 i7;
+            sb  output r1 i7;
 
             output: [u8; 8]
         }
@@ -163,35 +163,35 @@ impl u64 {
 
         asm(input: self, off: 0xFF, i: 0x8, j: 0x10, k: 0x18, l: 0x20, m: 0x28, n: 0x30, o: 0x38, output: output, r1) {
             and  r1 input off;
-            sw  output r1 i7;
+            sb  output r1 i7;
 
             srl  r1 input i;
             and  r1 r1 off;
-            sw  output r1 i6;
+            sb  output r1 i6;
 
             srl  r1 input j;
             and  r1 r1 off;
-            sw  output r1 i5;
+            sb  output r1 i5;
 
             srl  r1 input k;
             and  r1 r1 off;
-            sw  output r1 i4;
+            sb  output r1 i4;
 
             srl  r1 input l;
             and  r1 r1 off;
-            sw  output r1 i3;
+            sb  output r1 i3;
 
             srl  r1 input m;
             and  r1 r1 off;
-            sw  output r1 i2;
+            sb  output r1 i2;
 
             srl  r1 input n;
             and  r1 r1 off;
-            sw  output r1 i1;
+            sb  output r1 i1;
 
             srl  r1 input o;
             and  r1 r1 off;
-            sw  output r1 i0;
+            sb  output r1 i0;
 
             output: [u8; 8]
         }
@@ -294,19 +294,19 @@ impl u32 {
 
         asm(input: self, off: 0xFF, i: 0x8, j: 0x10, k: 0x18, output: output, r1) {
             and  r1 input off;
-            sw   output r1 i0;
+            sb   output r1 i0;
 
             srl  r1 input i;
             and  r1 r1 off;
-            sw   output r1 i1;
+            sb   output r1 i1;
 
             srl  r1 input j;
             and  r1 r1 off;
-            sw   output r1 i2;
+            sb   output r1 i2;
 
             srl  r1 input k;
             and  r1 r1 off;
-            sw   output r1 i3;
+            sb   output r1 i3;
 
             output: [u8; 4]
         }
@@ -369,18 +369,18 @@ impl u32 {
         asm(input: self, off: 0xFF, i: 0x8, j: 0x10, k: 0x18, output: output, r1) {
             srl  r1 input k;
             and  r1 r1 off;
-            sw   output r1 i0;
+            sb   output r1 i0;
 
             srl  r1 input j;
             and  r1 r1 off;
-            sw   output r1 i1;
+            sb   output r1 i1;
 
             srl  r1 input i;
             and  r1 r1 off;
-            sw   output r1 i2;
+            sb   output r1 i2;
 
             and  r1 input off;
-            sw   output r1 i3;
+            sb   output r1 i3;
 
             output: [u8; 4]
         }
@@ -509,11 +509,11 @@ impl u16 {
 
         asm(input: self, off: 0xFF, i: 0x8, output: output, r1) {
             and  r1 input off;
-            sw   output r1 i0;
+            sb   output r1 i0;
 
             srl  r1 input i;
             and  r1 r1 off;
-            sw   output r1 i1;
+            sb   output r1 i1;
 
             output: [u8; 2]
         }
@@ -569,10 +569,10 @@ impl u16 {
 
         asm(input: self, off: 0xFF, i: 0x8, output: output, r1) {
             srl r1 input i;
-            sw output r1 i0;
+            sb output r1 i0;
 
             and r1 input off;
-            sw output r1 i1;
+            sb output r1 i1;
 
             output: [u8; 2]
         }
