@@ -27,7 +27,9 @@ async fn call_script(script_data: Vec<u8>) -> Result<Vec<Receipt>> {
 
     wallet.sign_transaction(&mut tx)?;
 
-    wallet.provider().unwrap().send_transaction(&tx).await
+    let provider = wallet.provider().unwrap();
+    let tx_id = provider.send_transaction(&tx).await.unwrap();
+    provider.get_receipts(&tx_id).await
 }
 
 #[tokio::test]

@@ -14,10 +14,9 @@ async fn get_call_frames_instance() -> (CallFramesTestContract<WalletUnlocked>, 
         "test_projects/call_frames/out/debug/call_frames.bin",
         LoadConfiguration::default(),
     )
-    .unwrap()
-    .deploy(&wallet, TxParameters::default())
-    .await
     .unwrap();
+
+    let id = id.deploy(&wallet, TxParameters::default()).await.unwrap();
     let instance = CallFramesTestContract::new(id.clone(), wallet);
 
     (instance, id.into())
@@ -78,12 +77,12 @@ async fn can_get_second_param_u64() {
 #[tokio::test]
 async fn can_get_second_param_bool() {
     let (instance, _id) = get_call_frames_instance().await;
-    let result = instance
-        .methods()
-        .get_second_param_bool(true)
-        .call()
-        .await
-        .unwrap();
+    let result = instance.methods().get_second_param_bool(true);
+    dbg!(&result.contract_call.output_param);
+    let result = result.call().await.unwrap();
+    for r in result.receipts {
+        dbg!(r);
+    }
     assert_eq!(result.value, true);
 }
 

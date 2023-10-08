@@ -168,7 +168,9 @@ struct InstructionVerifier<'a, 'eng> {
 
 impl<'a, 'eng> InstructionVerifier<'a, 'eng> {
     fn verify_instructions(&self) -> Result<(), IrError> {
+        dbg!(&self.cur_function.name);
         for ins in &self.cur_block.instructions {
+            dbg!(ins);
             let value_content = &self.context.values[ins.0];
             if let ValueDatum::Instruction(instruction) = &value_content.value {
                 match instruction {
@@ -966,6 +968,7 @@ impl<'a, 'eng> InstructionVerifier<'a, 'eng> {
     fn verify_store(&self, dst_val: &Value, stored_val: &Value) -> Result<(), IrError> {
         let dst_ty = self.get_ptr_type(dst_val, IrError::VerifyStoreToNonPointer)?;
         let stored_ty = stored_val.get_type(self.context);
+
         if self.opt_ty_not_eq(&Some(dst_ty), &stored_ty) {
             Err(IrError::VerifyStoreMismatchedTypes)
         } else {

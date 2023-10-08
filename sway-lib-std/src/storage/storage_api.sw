@@ -51,6 +51,10 @@ pub fn write<T>(slot: b256, offset: u64, value: T) {
     // Copy the value to be stored to `padded_value + offset`.
     padded_value.add::<u64>(place_in_slot).write::<T>(value);
 
+    use ::logging::*;
+    log(9999999999999);
+    log(padded_value);
+
     // Now store back the data at `padded_value` which now contains the old data but partially 
     // overwritten by the new data in the desired locations.
     let _ = __state_store_quad(offset_slot, padded_value, number_of_slots);

@@ -20,11 +20,11 @@
       "name": "get_u64",
       "output": {
         "name": "",
-        "type": 2,
+        "type": 4,
         "typeArguments": [
           {
             "name": "",
-            "type": 9,
+            "type": 25,
             "typeArguments": null
           }
         ]
@@ -47,18 +47,18 @@
         },
         {
           "name": "slots",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         }
       ],
       "name": "intrinsic_load_quad",
       "output": {
         "name": "",
-        "type": 7,
+        "type": 22,
         "typeArguments": [
           {
             "name": "",
-            "type": 5,
+            "type": 20,
             "typeArguments": null
           }
         ]
@@ -83,7 +83,7 @@
       "name": "intrinsic_load_word",
       "output": {
         "name": "",
-        "type": 9,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -104,11 +104,11 @@
         },
         {
           "name": "values",
-          "type": 7,
+          "type": 22,
           "typeArguments": [
             {
               "name": "",
-              "type": 5,
+              "type": 20,
               "typeArguments": null
             }
           ]
@@ -138,7 +138,7 @@
         },
         {
           "name": "value",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         }
       ],
@@ -166,7 +166,7 @@
         },
         {
           "name": "value",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         }
       ],
@@ -201,7 +201,7 @@
       "logId": 0,
       "loggedType": {
         "name": "",
-        "type": 9,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -209,7 +209,7 @@
       "logId": 1,
       "loggedType": {
         "name": "",
-        "type": 9,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -217,7 +217,7 @@
       "logId": 2,
       "loggedType": {
         "name": "",
-        "type": 9,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -225,7 +225,7 @@
       "logId": 3,
       "loggedType": {
         "name": "",
-        "type": 9,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -233,7 +233,7 @@
       "logId": 4,
       "loggedType": {
         "name": "",
-        "type": 8,
+        "type": 6,
         "typeArguments": null
       }
     },
@@ -241,7 +241,7 @@
       "logId": 5,
       "loggedType": {
         "name": "",
-        "type": 8,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -249,7 +249,7 @@
       "logId": 6,
       "loggedType": {
         "name": "",
-        "type": 8,
+        "type": 6,
         "typeArguments": null
       }
     },
@@ -257,7 +257,7 @@
       "logId": 7,
       "loggedType": {
         "name": "",
-        "type": 8,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -265,7 +265,7 @@
       "logId": 8,
       "loggedType": {
         "name": "",
-        "type": 1,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -273,7 +273,7 @@
       "logId": 9,
       "loggedType": {
         "name": "",
-        "type": 1,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -281,7 +281,7 @@
       "logId": 10,
       "loggedType": {
         "name": "",
-        "type": 1,
+        "type": 25,
         "typeArguments": null
       }
     },
@@ -289,7 +289,575 @@
       "logId": 11,
       "loggedType": {
         "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 12,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 13,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 14,
+      "loggedType": {
+        "name": "",
         "type": 1,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 15,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 16,
+      "loggedType": {
+        "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 17,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 18,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 19,
+      "loggedType": {
+        "name": "",
+        "type": 18,
+        "typeArguments": []
+      }
+    },
+    {
+      "logId": 20,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 21,
+      "loggedType": {
+        "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 22,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 23,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 24,
+      "loggedType": {
+        "name": "",
+        "type": 2,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 25,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 26,
+      "loggedType": {
+        "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 27,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 28,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 29,
+      "loggedType": {
+        "name": "",
+        "type": 26,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 30,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 31,
+      "loggedType": {
+        "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 32,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 33,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 34,
+      "loggedType": {
+        "name": "",
+        "type": 23,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 35,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 36,
+      "loggedType": {
+        "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 37,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 38,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 39,
+      "loggedType": {
+        "name": "",
+        "type": 24,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 40,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 41,
+      "loggedType": {
+        "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 42,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 43,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 44,
+      "loggedType": {
+        "name": "",
+        "type": 3,
+        "typeArguments": []
+      }
+    },
+    {
+      "logId": 45,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 46,
+      "loggedType": {
+        "name": "",
+        "type": 6,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 47,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 48,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 49,
+      "loggedType": {
+        "name": "",
+        "type": 3,
+        "typeArguments": []
+      }
+    },
+    {
+      "logId": 50,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 51,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 52,
+      "loggedType": {
+        "name": "",
+        "type": 7,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 53,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 54,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 55,
+      "loggedType": {
+        "name": "",
+        "type": 9,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 56,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 57,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 58,
+      "loggedType": {
+        "name": "",
+        "type": 10,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 59,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 60,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 61,
+      "loggedType": {
+        "name": "",
+        "type": 11,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 62,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 63,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 64,
+      "loggedType": {
+        "name": "",
+        "type": 12,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 65,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 66,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 67,
+      "loggedType": {
+        "name": "",
+        "type": 13,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 68,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 69,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 70,
+      "loggedType": {
+        "name": "",
+        "type": 14,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 71,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 72,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 73,
+      "loggedType": {
+        "name": "",
+        "type": 15,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 74,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 75,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 76,
+      "loggedType": {
+        "name": "",
+        "type": 16,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 77,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 78,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 79,
+      "loggedType": {
+        "name": "",
+        "type": 17,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 80,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 81,
+      "loggedType": {
+        "name": "",
+        "type": 25,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 82,
+      "loggedType": {
+        "name": "",
+        "type": 8,
         "typeArguments": null
       }
     }
@@ -309,6 +877,29 @@
       "typeParameters": null
     },
     {
+      "components": null,
+      "type": "bool",
+      "typeId": 2,
+      "typeParameters": null
+    },
+    {
+      "components": [
+        {
+          "name": "A",
+          "type": 25,
+          "typeArguments": null
+        },
+        {
+          "name": "B",
+          "type": 19,
+          "typeArguments": null
+        }
+      ],
+      "type": "enum E",
+      "typeId": 3,
+      "typeParameters": null
+    },
+    {
       "components": [
         {
           "name": "None",
@@ -317,103 +908,256 @@
         },
         {
           "name": "Some",
-          "type": 3,
+          "type": 5,
           "typeArguments": null
         }
       ],
       "type": "enum std::option::Option",
-      "typeId": 2,
+      "typeId": 4,
       "typeParameters": [
-        3
+        5
       ]
     },
     {
       "components": null,
       "type": "generic T",
-      "typeId": 3,
+      "typeId": 5,
       "typeParameters": null
     },
     {
       "components": null,
       "type": "raw untyped ptr",
-      "typeId": 4,
+      "typeId": 6,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[0]",
+      "typeId": 7,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[10]",
+      "typeId": 8,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[1]",
+      "typeId": 9,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[2]",
+      "typeId": 10,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[3]",
+      "typeId": 11,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[4]",
+      "typeId": 12,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[5]",
+      "typeId": 13,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[6]",
+      "typeId": 14,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[7]",
+      "typeId": 15,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[8]",
+      "typeId": 16,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "str[9]",
+      "typeId": 17,
+      "typeParameters": null
+    },
+    {
+      "components": [
+        {
+          "name": "x",
+          "type": 25,
+          "typeArguments": null
+        },
+        {
+          "name": "y",
+          "type": 25,
+          "typeArguments": null
+        },
+        {
+          "name": "z",
+          "type": 1,
+          "typeArguments": null
+        },
+        {
+          "name": "t",
+          "type": 19,
+          "typeArguments": null
+        }
+      ],
+      "type": "struct S",
+      "typeId": 18,
+      "typeParameters": null
+    },
+    {
+      "components": [
+        {
+          "name": "x",
+          "type": 25,
+          "typeArguments": null
+        },
+        {
+          "name": "y",
+          "type": 25,
+          "typeArguments": null
+        },
+        {
+          "name": "z",
+          "type": 1,
+          "typeArguments": null
+        },
+        {
+          "name": "boolean",
+          "type": 2,
+          "typeArguments": null
+        },
+        {
+          "name": "int8",
+          "type": 26,
+          "typeArguments": null
+        },
+        {
+          "name": "int16",
+          "type": 23,
+          "typeArguments": null
+        },
+        {
+          "name": "int32",
+          "type": 24,
+          "typeArguments": null
+        }
+      ],
+      "type": "struct T",
+      "typeId": 19,
       "typeParameters": null
     },
     {
       "components": [
         {
           "name": "v1",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         },
         {
           "name": "v2",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         },
         {
           "name": "v3",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         },
         {
           "name": "v4",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         }
       ],
       "type": "struct basic_storage_abi::Quad",
-      "typeId": 5,
+      "typeId": 20,
       "typeParameters": null
     },
     {
       "components": [
         {
           "name": "ptr",
-          "type": 4,
+          "type": 6,
           "typeArguments": null
         },
         {
           "name": "cap",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         }
       ],
       "type": "struct std::vec::RawVec",
-      "typeId": 6,
+      "typeId": 21,
       "typeParameters": [
-        3
+        5
       ]
     },
     {
       "components": [
         {
           "name": "buf",
-          "type": 6,
+          "type": 21,
           "typeArguments": [
             {
               "name": "",
-              "type": 3,
+              "type": 5,
               "typeArguments": null
             }
           ]
         },
         {
           "name": "len",
-          "type": 9,
+          "type": 25,
           "typeArguments": null
         }
       ],
       "type": "struct std::vec::Vec",
-      "typeId": 7,
+      "typeId": 22,
       "typeParameters": [
-        3
+        5
       ]
     },
     {
       "components": null,
-      "type": "u256",
-      "typeId": 8,
+      "type": "u16",
+      "typeId": 23,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "u32",
+      "typeId": 24,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "u64",
+      "typeId": 25,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "u8",
+      "typeId": 26,
       "typeParameters": null
     },
     {

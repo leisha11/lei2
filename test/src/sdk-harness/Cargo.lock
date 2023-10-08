@@ -937,6 +937,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "diff"
+version = "0.1.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "56254986775e3233ffa9c4d7d3faaf6d36a2c09d30b20687e9f88bc8bafc16c8"
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1562,8 +1568,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "aa0d9fe01b4f234c07ef7d9e619ccb8d17e4a502af63f30a30a2097acab0dfdf"
 =======
 version = "0.46.0"
+<<<<<<< HEAD
 source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
 >>>>>>> 9dca3bd75 (Represent small values as single bytes)
+=======
+>>>>>>> 13095ad08 (fix memory representation issues)
 dependencies = [
  "fuel-core",
  "fuel-core-client",
@@ -1583,8 +1592,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b8d03d520ea383743f78af6909ac5a04c805ad4eb1f03d99c80b0d4679a44f6"
 =======
 version = "0.46.0"
+<<<<<<< HEAD
 source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
 >>>>>>> 9dca3bd75 (Represent small values as single bytes)
+=======
+>>>>>>> 13095ad08 (fix memory representation issues)
 dependencies = [
  "async-trait",
  "bytes",
@@ -1615,8 +1627,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a18b307990519c78c5c7661666a912c05915d1deed7bf4b577b50987fe97ae31"
 =======
 version = "0.46.0"
+<<<<<<< HEAD
 source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
 >>>>>>> 9dca3bd75 (Represent small values as single bytes)
+=======
+>>>>>>> 13095ad08 (fix memory representation issues)
 dependencies = [
  "Inflector",
  "fuel-abi-types",
@@ -1640,8 +1655,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79566b388d8822c4c06aac60d9647dbb9393807cd5e6653cfa0c1630644da196"
 =======
 version = "0.46.0"
+<<<<<<< HEAD
 source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
 >>>>>>> 9dca3bd75 (Represent small values as single bytes)
+=======
+>>>>>>> 13095ad08 (fix memory representation issues)
 dependencies = [
  "bech32",
  "chrono",
@@ -1680,8 +1698,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8c92232ef42b254a1649c6a6bfddd35b2c50f358b15e98e953eb82d69b397c57"
 =======
 version = "0.46.0"
+<<<<<<< HEAD
 source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
 >>>>>>> 9dca3bd75 (Represent small values as single bytes)
+=======
+>>>>>>> 13095ad08 (fix memory representation issues)
 dependencies = [
  "Inflector",
  "fuel-abi-types",
@@ -1707,8 +1728,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e1e4250bb73ff44cfdcd39f86c0e3163c11753e16583013fae698e9132400280"
 =======
 version = "0.46.0"
+<<<<<<< HEAD
 source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
 >>>>>>> 9dca3bd75 (Represent small values as single bytes)
+=======
+>>>>>>> 13095ad08 (fix memory representation issues)
 dependencies = [
  "async-trait",
  "bytes",
@@ -1746,8 +1770,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4df1a046adf1862f5b1844800abed842c6748abb2dc94c8e0df43473e96c3f4d"
 =======
 version = "0.46.0"
+<<<<<<< HEAD
 source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
 >>>>>>> 9dca3bd75 (Represent small values as single bytes)
+=======
+>>>>>>> 13095ad08 (fix memory representation issues)
 dependencies = [
  "fuel-core",
  "fuel-core-chain-config",
@@ -2648,6 +2675,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
 
 [[package]]
+name = "pretty_assertions"
+version = "1.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af7cee1a6c8a5b9208b3cb1061f10c0cb689087b3d8ce85fb9d2dd7a29b6ba66"
+dependencies = [
+ "diff",
+ "yansi",
+]
+
+[[package]]
 name = "primeorder"
 version = "0.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3526,6 +3563,7 @@ dependencies = [
  "fuel-vm",
  "fuels",
  "hex",
+ "pretty_assertions",
  "rand",
  "sha2",
  "sha3",
@@ -4207,6 +4245,12 @@ checksum = "05f360fc0b24296329c78fda852a1e9ae82de9cf7b27dae4b7f62f118f77b9ed"
 dependencies = [
  "tap",
 ]
+
+[[package]]
+name = "yansi"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "09041cd90cf85f7f8b2df60c646f853b7f535ce68f85244eb6731cf89fa498ec"
 
 [[package]]
 name = "zeroize"

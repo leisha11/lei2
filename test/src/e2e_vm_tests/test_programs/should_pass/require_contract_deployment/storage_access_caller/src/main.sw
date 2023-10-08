@@ -4,13 +4,14 @@ use storage_access_abi::*;
 use std::hash::*;
 
 fn main() -> bool {
-    let contract_id = 0xe04d4f20b47fd753cfcc55e1f7adb2b9548f488b33b13bee7a0fb9d011d6a8e2;
+    let contract_id = 0xac485e9e4af0a47d97aa527970a79c994f16add4c9da8ca1de7aef430ad7568e;
     let caller = abi(StorageAccess, contract_id);
 
     // Test initializers
     assert(caller.get_x() == 64);
     assert(caller.get_y() == 0x0101010101010101010101010101010101010101010101010101010101010101);
     assert(caller.get_boolean() == true);
+<<<<<<< HEAD
     assert(caller.get_int8() == 8);
     assert(caller.get_int16() == 16);
     assert(caller.get_int32() == 32);
@@ -194,5 +195,8 @@ fn main() -> bool {
     // Can't compare strings right now so compare hashes instead
     assert(sha256_str_array(caller.get_string()) == sha256("fuelfuelfuelfuelfuelfuelfuelfuelfuelfuel"));
 
+=======
+    
+>>>>>>> 13095ad08 (fix memory representation issues)
     true
 }

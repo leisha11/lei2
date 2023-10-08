@@ -58,6 +58,7 @@ async fn script_configurables() -> Result<()> {
         .main()
         .call()
         .await?;
+    dbg!(&response);
 
     let expected_value = (
         8u8,
@@ -68,7 +69,7 @@ async fn script_configurables() -> Result<()> {
         new_enum,
     );
 
-    assert_eq!(response.value, expected_value);
+    pretty_assertions::assert_eq!(response.value, expected_value);
 
     Ok(())
 }

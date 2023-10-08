@@ -198,7 +198,7 @@ impl AbstractProgram {
             // Load the data into a register for comparison.
             asm_buf.ops.push(AllocatedAbstractOp {
                 opcode: Either::Left(AllocatedOpcode::LoadDataId(PROG_SELECTOR_REG, data_label)),
-                comment: "load fn selector for comparison".into(),
+                comment: format!("load fn selector for comparison {}", entry.name),
                 owning_span: None,
             });
 

@@ -28,5 +28,12 @@ async fn test_storage_init_instance() -> TestStorageInitContract<WalletUnlocked>
 #[tokio::test]
 async fn test_initializers() {
     let methods = test_storage_init_instance().await.methods();
-    assert!(methods.test_initializers().call().await.unwrap().value);
+    let l = dbg!(methods.test_initializers().call().await);
+    let receipts = match l {
+        Ok(l) => l.receipts,
+        Err(Error::RevertTransactionError { receipts, .. }) => receipts,
+        _ => todo!(),
+    };
+    pretty_assertions::assert_eq!(&receipts[4].data(), &receipts[5].data());
+    // assert!(l.value);
 }

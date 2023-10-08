@@ -326,7 +326,7 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
                 let single_arg_reg = self.reg_seqr.next();
                 match self.program_kind {
                     ProgramKind::Contract => {
-                        self.read_args_base_from_frame(&single_arg_reg);
+                        self.read_args_base_from_frame(&single_arg_reg, Some(val));
                     }
                     ProgramKind::Library => {} // Nothing to do here
                     ProgramKind::Script | ProgramKind::Predicate => {
@@ -362,7 +362,7 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
             _ => {
                 let args_base_reg = self.reg_seqr.next();
                 match self.program_kind {
-                    ProgramKind::Contract => self.read_args_base_from_frame(&args_base_reg),
+                    ProgramKind::Contract => self.read_args_base_from_frame(&args_base_reg, None),
                     ProgramKind::Library => return Ok(()), // Nothing to do here
                     ProgramKind::Predicate => {
                         self.read_args_base_from_predicate_data(&args_base_reg)
@@ -395,11 +395,36 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
                                 comment: format!("get offset for arg {name}"),
                                 owning_span: None,
                             });
+
+                            if arg_type.size_in_bytes(self.context) == 1 {
+                                self.cur_bytecode.push(Op {
+                                    opcode: Either::Left(VirtualOp::LB(
+                                        current_arg_reg.clone(),
+                                        offs_reg,
+                                        VirtualImmediate12 { value: 0 },
+                                    )),
+                                    comment: format!("get arg {name}"),
+                                    owning_span: None,
+                                });
+                            } else {
+                                self.cur_bytecode.push(Op {
+                                    opcode: Either::Left(VirtualOp::LW(
+                                        current_arg_reg.clone(),
+                                        offs_reg,
+                                        VirtualImmediate12 { value: 0 },
+                                    )),
+                                    comment: format!("get arg {name}"),
+                                    owning_span: None,
+                                });
+                            }
+                        } else if arg_type.size_in_bytes(self.context) == 1 {
                             self.cur_bytecode.push(Op {
-                                opcode: Either::Left(VirtualOp::LW(
+                                opcode: Either::Left(VirtualOp::LB(
                                     current_arg_reg.clone(),
-                                    offs_reg,
-                                    VirtualImmediate12 { value: 0 },
+                                    args_base_reg.clone(),
+                                    VirtualImmediate12 {
+                                        value: arg_word_offset as u16 * 8,
+                                    },
                                 )),
                                 comment: format!("get arg {name}"),
                                 owning_span: None,
@@ -437,7 +462,23 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
     }
 
     // Read the argument(s) base from the call frame.
-    fn read_args_base_from_frame(&mut self, reg: &VirtualRegister) {
+    fn read_args_base_from_frame(&mut self, reg: &VirtualRegister, value: Option<&Value>) {
+        if let Some(t) = value.and_then(|x| x.get_type(self.context)) {
+            if t.size_in_bytes(self.context) == 1 {
+                self.cur_bytecode.push(Op {
+                    opcode: Either::Left(VirtualOp::LB(
+                        reg.clone(),
+                        VirtualRegister::Constant(ConstantRegister::FramePointer),
+                        // see https://github.com/FuelLabs/fuel-specs/pull/193#issuecomment-876496372
+                        VirtualImmediate12 { value: 74 * 8 },
+                    )),
+                    comment: "base register for method parameter".into(),
+                    owning_span: None,
+                });
+                return;
+            }
+        }
+
         self.cur_bytecode.push(Op {
             opcode: Either::Left(VirtualOp::LW(
                 reg.clone(),

@@ -1893,7 +1893,12 @@ impl<'eng> FnCompiler<'eng> {
         // We must compile the RHS before checking for shadowing, as it will still be in the
         // previous scope.
         let body_deterministically_aborts = body.deterministically_aborts(self.engines.de(), false);
+        dbg!(body.with_context(context));
         let init_val = self.compile_expression_to_value(context, md_mgr, body)?;
+        dbg!(
+            &init_val,
+            init_val.get_type(context).unwrap().as_string(context)
+        );
         if init_val.is_diverging(context) || body_deterministically_aborts {
             return Ok(Some(init_val));
         }
@@ -1901,13 +1906,14 @@ impl<'eng> FnCompiler<'eng> {
         let local_name = self.lexical_map.insert(name.as_str().to_owned());
         let local_var = self
             .function
-            .new_local_var(context, local_name, return_type, None, mutable)
+            .new_local_var(context, local_name.clone(), return_type, None, mutable)
             .map_err(|ir_error| CompileError::InternalOwned(ir_error.to_string(), Span::dummy()))?;
 
         // We can have empty aggregates, especially arrays, which shouldn't be initialised, but
         // otherwise use a store.
         let var_ty = local_var.get_type(context);
         if ir_type_size_in_bytes(context, &var_ty) > 0 {
+            dbg!(&local_name, var_ty.as_string(context));
             let local_ptr = self
                 .current_block
                 .ins(context)
@@ -2140,6 +2146,7 @@ impl<'eng> FnCompiler<'eng> {
             context,
             elem_type,
         )?;
+        dbg!(elem_type.as_string(context));
 
         let array_type = Type::new_array(context, elem_type, contents.len() as u64);
 
@@ -2148,11 +2155,13 @@ impl<'eng> FnCompiler<'eng> {
             .function
             .new_local_var(context, temp_name, array_type, None, false)
             .map_err(|ir_error| CompileError::InternalOwned(ir_error.to_string(), Span::dummy()))?;
+        dbg!(array_var.get_type(context).as_string(context));
         let array_value = self
             .current_block
             .ins(context)
             .get_local(array_var)
             .add_metadatum(context, span_md_idx);
+        dbg!(array_value.get_type(context).unwrap().as_string(context));
 
         // Compile each element and insert it immediately.
         for (idx, elem_expr) in contents.iter().enumerate() {
@@ -2165,10 +2174,13 @@ impl<'eng> FnCompiler<'eng> {
                 elem_type,
                 idx as u64,
             );
-            self.current_block
+            dbg!(gep_val.get_type(context).unwrap().as_string(context));
+            dbg!(elem_value.get_type(context).unwrap().as_string(context));
+            dbg!(self
+                .current_block
                 .ins(context)
                 .store(gep_val, elem_value)
-                .add_metadatum(context, span_md_idx);
+                .add_metadatum(context, span_md_idx));
         }
         Ok(array_value)
     }

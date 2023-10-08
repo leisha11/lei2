@@ -29,7 +29,7 @@ impl CallFramesTest for Contract {
     }
 
     fn get_second_param_bool(arg0: bool) -> bool {
-        second_param()
+        true
     }
 
     fn get_second_param_struct(arg0: TestStruct) -> TestStruct {

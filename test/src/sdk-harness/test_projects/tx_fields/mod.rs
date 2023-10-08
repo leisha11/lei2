@@ -307,12 +307,9 @@ mod tx {
 
         let inputs = tx.inputs();
 
-        let receipts = wallet
-            .provider()
-            .unwrap()
-            .send_transaction(&tx)
-            .await
-            .unwrap();
+        let provider = wallet.provider().unwrap();
+        let tx_id = provider.send_transaction(&tx).await.unwrap();
+        let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
         assert_eq!(inputs.len() as u64, 3u64);
         assert_eq!(receipts[1].val().unwrap(), inputs.len() as u64);
@@ -357,12 +354,9 @@ mod tx {
         let mut tx = handler.build_tx().await.unwrap();
         deployment_wallet.sign_transaction(&mut tx).unwrap();
 
-        let receipts = wallet
-            .provider()
-            .unwrap()
-            .send_transaction(&tx)
-            .await
-            .unwrap();
+        let provider = wallet.provider().unwrap();
+        let tx_id = provider.send_transaction(&tx).await.unwrap();
+        let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
         assert_eq!(receipts[1].val().unwrap(), 11040);
     }
@@ -388,12 +382,9 @@ mod tx {
         let tx = handler.build_tx().await.unwrap();
         let witnesses = tx.witnesses();
 
-        let receipts = wallet
-            .provider()
-            .unwrap()
-            .send_transaction(&tx)
-            .await
-            .unwrap();
+        let provider = wallet.provider().unwrap();
+        let tx_id = provider.send_transaction(&tx).await.unwrap();
+        let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
         assert_eq!(receipts[1].data().unwrap(), witnesses[0].as_vec());
     }
@@ -467,12 +458,10 @@ mod tx {
         let params = wallet.provider().unwrap().consensus_parameters();
         let tx_id = tx.id(*params.chain_id);
 
-        let receipts = wallet
-            .provider()
-            .unwrap()
-            .send_transaction(&tx)
-            .await
-            .unwrap();
+        let provider = wallet.provider().unwrap();
+        let tx_id = provider.send_transaction(&tx).await.unwrap();
+        let receipts = provider.get_receipts(&tx_id).await.unwrap();
+
         let byte_array: [u8; 32] = tx_id.into();
 
         assert_eq!(receipts[1].data().unwrap(), byte_array);
@@ -587,12 +576,9 @@ mod inputs {
             tx.estimate_predicates(&wallet.provider().unwrap().consensus_parameters())
                 .unwrap();
 
-            let receipts = wallet
-                .provider()
-                .unwrap()
-                .send_transaction(&tx)
-                .await
-                .unwrap();
+            let provider = wallet.provider().unwrap();
+            let tx_id = provider.send_transaction(&tx).await.unwrap();
+            let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
             assert_eq!(receipts[1].val().unwrap(), 1);
         }
@@ -609,12 +595,10 @@ mod inputs {
                 tx.precompute(*ChainId::default())?;
 
                 let messages = wallet.get_messages().await?;
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
                 assert_eq!(receipts[1].data().unwrap(), *messages[0].sender.hash());
                 Ok(())
@@ -629,12 +613,11 @@ mod inputs {
                 tx.precompute(*ChainId::default())?;
 
                 let messages = wallet.get_messages().await?;
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
+
                 assert_eq!(receipts[1].data().unwrap(), *messages[0].recipient.hash());
                 Ok(())
             }
@@ -648,12 +631,11 @@ mod inputs {
                 tx.precompute(*ChainId::default())?;
 
                 let messages = wallet.get_messages().await?;
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
+
                 let nonce = *messages[0].nonce.clone();
                 let val = receipts[1].data().unwrap();
                 assert_eq!(val, &nonce);
@@ -681,12 +663,9 @@ mod inputs {
                 add_message_input(&mut tx, wallet.clone()).await;
                 tx.precompute(*ChainId::default()).unwrap();
 
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
                 assert_eq!(receipts[1].val().unwrap(), 3);
             }
@@ -703,12 +682,9 @@ mod inputs {
                 tx.estimate_predicates(&wallet.provider().unwrap().consensus_parameters())
                     .unwrap();
 
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
                 assert_eq!(receipts[1].val().unwrap(), predicate_bytecode.len() as u64);
             }
@@ -726,12 +702,10 @@ mod inputs {
                 tx.estimate_predicates(&wallet.provider().unwrap().consensus_parameters())
                     .unwrap();
 
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
+
                 assert_eq!(receipts[1].val().unwrap(), 0);
             }
 
@@ -747,12 +721,9 @@ mod inputs {
                 add_message_input(&mut tx, wallet.clone()).await;
                 tx.precompute(*ChainId::default()).unwrap();
 
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
                 assert_eq!(receipts[1].val().unwrap(), 1);
             }
@@ -773,12 +744,9 @@ mod inputs {
                 tx.estimate_predicates(&wallet.provider().unwrap().consensus_parameters())
                     .unwrap();
 
-                let receipts = wallet
-                    .provider()
-                    .unwrap()
-                    .send_transaction(&tx)
-                    .await
-                    .unwrap();
+                let provider = wallet.provider().unwrap();
+                let tx_id = provider.send_transaction(&tx).await.unwrap();
+                let receipts = provider.get_receipts(&tx_id).await.unwrap();
 
                 assert_eq!(receipts[1].val().unwrap(), 1);
             }

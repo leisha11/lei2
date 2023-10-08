@@ -65,6 +65,7 @@ async fn can_send_bool_message() {
         .call()
         .await
         .unwrap();
+    dbg!(&call_response);
 
     let message_receipt = call_response
         .receipts
@@ -75,11 +76,8 @@ async fn can_send_bool_message() {
     assert_eq!(*messages_contract_id, **message_receipt.sender().unwrap());
     assert_eq!(&recipient_address, message_receipt.recipient().unwrap());
     assert_eq!(amount, message_receipt.amount().unwrap());
-    assert_eq!(16, message_receipt.len().unwrap()); // smo ID + 8 bytes
-    assert_eq!(
-        vec![0, 0, 0, 0, 0, 0, 0, 1],
-        message_receipt.data().unwrap()[8..16]
-    );
+    assert_eq!(9, message_receipt.len().unwrap()); // smo ID + 1 bytes
+    assert_eq!(vec![1], message_receipt.data().unwrap()[8..9]);
 }
 
 #[tokio::test]
@@ -105,11 +103,8 @@ async fn can_send_u8_message() {
     assert_eq!(*messages_contract_id, **message_receipt.sender().unwrap());
     assert_eq!(&recipient_address, message_receipt.recipient().unwrap());
     assert_eq!(amount, message_receipt.amount().unwrap());
-    assert_eq!(16, message_receipt.len().unwrap()); // smo ID + 8 bytes
-    assert_eq!(
-        vec![0, 0, 0, 0, 0, 0, 0, 42],
-        message_receipt.data().unwrap()[8..16]
-    );
+    assert_eq!(9, message_receipt.len().unwrap()); // smo ID + 8 bytes
+    assert_eq!(vec![42], message_receipt.data().unwrap()[8..9]);
 }
 
 #[tokio::test]
@@ -342,16 +337,18 @@ async fn can_send_string_message() {
     let message = "fuel";
     let amount = 33u64;
 
-    let call_response = messages_instance
-        .methods()
-        .send_typed_message_string(
-            Bits256(*recipient_address),
-            message.try_into().unwrap(),
-            amount,
-        )
-        .call()
-        .await
-        .unwrap();
+    let call_response = dbg!(
+        messages_instance
+            .methods()
+            .send_typed_message_string(
+                Bits256(*recipient_address),
+                message.try_into().unwrap(),
+                amount,
+            )
+            .call()
+            .await
+    )
+    .unwrap();
 
     let message_receipt = call_response
         .receipts
@@ -362,15 +359,14 @@ async fn can_send_string_message() {
     assert_eq!(*messages_contract_id, **message_receipt.sender().unwrap());
     assert_eq!(&recipient_address, message_receipt.recipient().unwrap());
     assert_eq!(amount, message_receipt.amount().unwrap());
-    assert_eq!(16, message_receipt.len().unwrap()); // smo ID + 8 bytes
+    assert_eq!(12, message_receipt.len().unwrap()); // smo ID + 4 bytes
     assert_eq!(
         [
             102, // 'f'
             117, // 'u'
             101, // 'e'
             108, // 'l'
-            0, 0, 0, 0, // padding
         ],
-        message_receipt.data().unwrap()[8..16]
+        message_receipt.data().unwrap()[8..12]
     );
 }

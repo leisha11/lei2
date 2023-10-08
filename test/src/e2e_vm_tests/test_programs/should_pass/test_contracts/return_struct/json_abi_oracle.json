@@ -25,7 +25,32 @@
       }
     }
   ],
-  "loggedTypes": [],
+  "loggedTypes": [
+    {
+      "logId": 0,
+      "loggedType": {
+        "name": "",
+        "type": 4,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 1,
+      "loggedType": {
+        "name": "",
+        "type": 4,
+        "typeArguments": null
+      }
+    },
+    {
+      "logId": 2,
+      "loggedType": {
+        "name": "",
+        "type": 3,
+        "typeArguments": []
+      }
+    }
+  ],
   "messagesTypes": [],
   "types": [
     {
@@ -63,6 +88,12 @@
       "components": [],
       "type": "struct data_structures::MyStruct",
       "typeId": 3,
+      "typeParameters": null
+    },
+    {
+      "components": null,
+      "type": "u64",
+      "typeId": 4,
       "typeParameters": null
     }
   ]

@@ -54,6 +54,9 @@ impl TestFuelCoin for Contract {
         send_typed_message(recipient, msg_data, coins);
     }
     fn send_typed_message_string(recipient: b256, msg_data: str[4], coins: u64) {
+        log(recipient);
+        log(msg_data);
+        log(coins);
         send_typed_message(recipient, msg_data, coins);
     }
 }

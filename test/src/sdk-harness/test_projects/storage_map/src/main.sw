@@ -372,12 +372,16 @@ impl StorageMapTest for Contract {
 
     #[storage(read, write)]
     fn insert_into_bool_to_u64_map(key: bool, value: u64) {
+        log(key);
+        log(value);
         storage.map11.insert(key, value);
     }
 
     #[storage(read)]
     fn get_from_bool_to_u64_map(key: bool) -> Option<u64> {
-        storage.map11.get(key).try_read()
+        let r = storage.map11.get(key).try_read();
+        log(r);
+        r
     }
 
     #[storage(write)]

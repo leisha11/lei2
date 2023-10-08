@@ -120,25 +120,48 @@ impl ExperimentalStorageInitTest for Contract {
         let e2: E = E::A(777);
         let string: str[40] = __to_str_array("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
+        
+        log(1);
         assert(storage.x.read() == x);
+        log(1);
         assert(storage.y.read() == y);
+        log(1);
+        log(storage.s.read());
+        log(s);
         assert(storage.s.read() == s);
+        log(1);
         assert(storage.boolean.read() == boolean);
+        log(1);
         assert(storage.int8.read() == int8);
+        log(1);
         assert(storage.int16.read() == int16);
+        log(1);
         assert(storage.int32.read() == int32);
+        log(1);
         assert(storage.s.x.read() == s.x);
+        log(1);
         assert(storage.s.y.read() == s.y);
+        log(1);
         assert(storage.s.z.read() == s.z);
+        log(1);
         assert(storage.s.t.read() == s.t);
+        log(1);
         assert(storage.s.t.x.read() == s.t.x);
+        log(1);
         assert(storage.s.t.y.read() == s.t.y);
+        log(1);
         assert(storage.s.t.z.read() == s.t.z);
+        log(1);
         assert(storage.s.t.boolean.read() == s.t.boolean);
+        log(1);
         assert(storage.s.t.int8.read() == s.t.int8);
+        log(1);
         assert(storage.s.t.int16.read() == s.t.int16);
+        log(1);
         assert(storage.s.t.int32.read() == s.t.int32);
+        log(1);
         assert(storage.e.read() == e);
+        log(1);
         assert(storage.e2.read() == e2);
         assert(sha256_str_array(storage.string.read()) == sha256_str_array(string));
         true

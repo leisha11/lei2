@@ -149,6 +149,7 @@ impl MyContract for Contract {
     }
 
     fn keccak256_u8(value: u8) -> b256 {
+        log(value);
         keccak256(value)
     }
 
@@ -177,6 +178,8 @@ impl MyContract for Contract {
     }
 
     fn keccak256_tuple(value: (bool, u64)) -> b256 {
+        log(value.0);
+        log(value.1);
         keccak256(value)
     }
 
