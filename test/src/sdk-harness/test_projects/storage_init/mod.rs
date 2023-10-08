@@ -28,7 +28,7 @@ async fn test_storage_init_instance() -> TestStorageInitContract<WalletUnlocked>
 #[tokio::test]
 async fn test_initializers() {
     let methods = test_storage_init_instance().await.methods();
-    let l = dbg!(methods.test_initializers().call().await);
+    let l = methods.test_initializers().call().await;
     let receipts = match l {
         Ok(l) => l.receipts,
         Err(Error::RevertTransactionError { receipts, .. }) => receipts,

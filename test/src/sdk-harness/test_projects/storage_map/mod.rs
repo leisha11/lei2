@@ -918,16 +918,12 @@ mod to_u64_map {
             None
         );
 
-        dbg!(7);
-        dbg!(
-            instance
-                .methods()
-                .insert_into_bool_to_u64_map(key1, val1)
-                .call()
-                .await
-        )
-        .unwrap();
-        dbg!(7);
+        instance
+            .methods()
+            .insert_into_bool_to_u64_map(key1, val1)
+            .call()
+            .await
+            .unwrap();
 
         instance
             .methods()
@@ -937,15 +933,13 @@ mod to_u64_map {
             .unwrap();
 
         assert_eq!(
-            dbg!(
-                instance
-                    .methods()
-                    .get_from_bool_to_u64_map(key1)
-                    .call()
-                    .await
-            )
-            .unwrap()
-            .value,
+            instance
+                .methods()
+                .get_from_bool_to_u64_map(key1)
+                .call()
+                .await
+                .unwrap()
+                .value,
             Some(val1)
         );
         assert_eq!(

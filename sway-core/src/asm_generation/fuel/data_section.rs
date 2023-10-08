@@ -147,7 +147,9 @@ impl Entry {
             ConstantValue::U256(u) => {
                 Entry::new_byte_array(u.to_be_bytes().to_vec(), name, padding)
             }
-            ConstantValue::B256(bs) => Entry::new_byte_array(bs.to_vec(), name, padding),
+            ConstantValue::B256(bs) => {
+                Entry::new_byte_array(bs.to_be_bytes().to_vec(), name, padding)
+            }
             ConstantValue::String(bs) => Entry::new_byte_array(bs.clone(), name, padding),
 
             ConstantValue::Array(els) => Entry::new_collection(

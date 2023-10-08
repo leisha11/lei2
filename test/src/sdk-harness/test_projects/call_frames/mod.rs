@@ -32,7 +32,12 @@ async fn can_get_contract_id() {
 #[tokio::test]
 async fn can_get_id_contract_id_this() {
     let (instance, id) = get_call_frames_instance().await;
-    let result = instance.methods().get_id_contract_id_this().call().await.unwrap();
+    let result = instance
+        .methods()
+        .get_id_contract_id_this()
+        .call()
+        .await
+        .unwrap();
     assert_eq!(result.value, id);
 }
 
@@ -78,11 +83,7 @@ async fn can_get_second_param_u64() {
 async fn can_get_second_param_bool() {
     let (instance, _id) = get_call_frames_instance().await;
     let result = instance.methods().get_second_param_bool(true);
-    dbg!(&result.contract_call.output_param);
     let result = result.call().await.unwrap();
-    for r in result.receipts {
-        dbg!(r);
-    }
     assert_eq!(result.value, true);
 }
 

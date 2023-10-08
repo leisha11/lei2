@@ -1383,12 +1383,8 @@ mod ir_builder {
                         .state_store_word(*val_map.get(&src).unwrap(), *val_map.get(&key).unwrap())
                         .add_metadatum(context, opt_metadata),
                     IrAstOperation::Store(stored_val_name, dst_val_name) => {
-                        let dst_val_ptr = *val_map.get(dbg!(&dst_val_name)).unwrap();
-                        let stored_val = *val_map.get(dbg!(&stored_val_name)).unwrap();
-
-                        dbg!(dst_val_ptr.get_type(context).unwrap().as_string(context));
-                        dbg!(stored_val.get_type(context).unwrap().as_string(context));
-                        dbg!(stored_val.with_context(context));
+                        let dst_val_ptr = *val_map.get(&dst_val_name).unwrap();
+                        let stored_val = *val_map.get(&stored_val_name).unwrap();
 
                         block
                             .ins(context)

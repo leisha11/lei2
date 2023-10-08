@@ -58,7 +58,6 @@ async fn script_configurables() -> Result<()> {
         .main()
         .call()
         .await?;
-    dbg!(&response);
 
     let expected_value = (
         8u8,

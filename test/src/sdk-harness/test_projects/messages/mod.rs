@@ -65,7 +65,6 @@ async fn can_send_bool_message() {
         .call()
         .await
         .unwrap();
-    dbg!(&call_response);
 
     let message_receipt = call_response
         .receipts
@@ -337,18 +336,16 @@ async fn can_send_string_message() {
     let message = "fuel";
     let amount = 33u64;
 
-    let call_response = dbg!(
-        messages_instance
-            .methods()
-            .send_typed_message_string(
-                Bits256(*recipient_address),
-                message.try_into().unwrap(),
-                amount,
-            )
-            .call()
-            .await
-    )
-    .unwrap();
+    let call_response = messages_instance
+        .methods()
+        .send_typed_message_string(
+            Bits256(*recipient_address),
+            message.try_into().unwrap(),
+            amount,
+        )
+        .call()
+        .await
+        .unwrap();
 
     let message_receipt = call_response
         .receipts

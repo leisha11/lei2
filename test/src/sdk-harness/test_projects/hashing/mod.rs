@@ -304,14 +304,12 @@ mod sha256 {
         let expected_1 = Bits256(hash_str("John", Hash::Sha256));
         let expected_2 = Bits256(hash_str("Nick", Hash::Sha256));
 
-        dbg!(1);
         let call_1 = instance
             .methods()
             .sha256_str_array(SizedAsciiString::try_from("John").unwrap())
             .call()
             .await
             .unwrap();
-        dbg!(&call_1);
         let call_2 = instance
             .methods()
             .sha256_str_array(SizedAsciiString::try_from("John").unwrap())

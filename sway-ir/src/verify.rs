@@ -168,9 +168,7 @@ struct InstructionVerifier<'a, 'eng> {
 
 impl<'a, 'eng> InstructionVerifier<'a, 'eng> {
     fn verify_instructions(&self) -> Result<(), IrError> {
-        dbg!(&self.cur_function.name);
         for ins in &self.cur_block.instructions {
-            dbg!(ins);
             let value_content = &self.context.values[ins.0];
             if let ValueDatum::Instruction(instruction) = &value_content.value {
                 match instruction {
