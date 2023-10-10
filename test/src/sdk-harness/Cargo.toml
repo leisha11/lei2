@@ -8,7 +8,6 @@ publish = false
 
 [dependencies]
 assert_matches = "1.5.0"
-pretty_assertions = "1.4.0"
 
 # Dependencies from the `fuel-core` repository:
 fuel-core = { version = "0.20", default-features = false }
@@ -23,6 +22,7 @@ fuels = { git = "https://github.com/FuelLabs/fuels-rs.git", branch = "IGI-111/in
 ] }
 
 hex = "0.4.3"
+pretty_assertions = "1.4.0"
 rand = "0.8"
 sha2 = "0.10"
 sha3 = "0.10.1"

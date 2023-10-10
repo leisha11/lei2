@@ -95,6 +95,9 @@ impl<T> StorageKey<T> {
     /// ```
     #[storage(read, write)]
     pub fn write(self, value: T) {
+        use ::logging::*;
+        log(444444444444444);
+        log(value);
         write(self.slot, self.offset, value);
     }
 

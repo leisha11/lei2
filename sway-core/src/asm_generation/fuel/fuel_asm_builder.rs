@@ -1730,7 +1730,7 @@ impl<'ir, 'eng> FuelAsmBuilder<'ir, 'eng> {
                 (VirtualRegister::Constant(ConstantRegister::Zero), None)
             }
 
-            ConstantValue::Bool(true) | ConstantValue::Uint(1) if config_name.is_none() => {
+            ConstantValue::Uint(1) if config_name.is_none() => {
                 (VirtualRegister::Constant(ConstantRegister::One), None)
             }
 

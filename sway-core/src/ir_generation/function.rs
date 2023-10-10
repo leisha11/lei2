@@ -1223,34 +1223,47 @@ impl<'eng> FnCompiler<'eng> {
             1 => {
                 // The single arg doesn't need to be put into a struct.
                 let arg0 = compiled_args[0];
-                if self
-                    .engines
-                    .te()
-                    .get_unaliased(ast_args[0].1.return_type)
-                    .is_copy_type()
-                {
-                    self.current_block
+                let arg0_type = self.engines.te().get_unaliased(ast_args[0].1.return_type);
+
+                match arg0_type {
+                    TypeInfo::Boolean | TypeInfo::UnsignedInteger(IntegerBits::Eight) => {
+                        let bitcasted = self
+                            .current_block
+                            .ins(context)
+                            .bitcast(arg0, u64_ty)
+                            .add_metadatum(context, span_md_idx);
+                        let seven = Constant::new_uint(context, 64, 7);
+                        let seven = Value::new_constant(context, seven);
+                        self.current_block.ins(context).binary_op(
+                            BinaryOpKind::Lsh,
+                            bitcasted,
+                            seven,
+                        )
+                    }
+                    _ if arg0_type.is_copy_type() => self
+                        .current_block
                         .ins(context)
                         .bitcast(arg0, u64_ty)
-                        .add_metadatum(context, span_md_idx)
-                } else {
-                    // Use a temporary to pass a reference to the arg.
-                    let arg0_type = arg0.get_type(context).unwrap();
-                    let temp_arg_name = self
-                        .lexical_map
-                        .insert(format!("{}{}", "arg_for_", ast_name));
-                    let temp_var = self
-                        .function
-                        .new_local_var(context, temp_arg_name, arg0_type, None, false)
-                        .map_err(|ir_error| {
-                            CompileError::InternalOwned(ir_error.to_string(), Span::dummy())
-                        })?;
+                        .add_metadatum(context, span_md_idx),
+                    _ => {
+                        // Use a temporary to pass a reference to the arg.
+                        let arg0_type = arg0.get_type(context).unwrap();
+                        let temp_arg_name = self
+                            .lexical_map
+                            .insert(format!("{}{}", "arg_for_", ast_name));
+                        let temp_var = self
+                            .function
+                            .new_local_var(context, temp_arg_name, arg0_type, None, false)
+                            .map_err(|ir_error| {
+                                CompileError::InternalOwned(ir_error.to_string(), Span::dummy())
+                            })?;
 
-                    let temp_val = self.current_block.ins(context).get_local(temp_var);
-                    self.current_block.ins(context).store(temp_val, arg0);
+                        let temp_val = self.current_block.ins(context).get_local(temp_var);
+                        self.current_block.ins(context).store(temp_val, arg0);
 
-                    // NOTE: Here we're casting the temp pointer to an integer.
-                    self.current_block.ins(context).ptr_to_int(temp_val, u64_ty)
+                        // NOTE: Here we're casting the temp pointer to an integer.
+                        self.current_block.ins(context).ptr_to_int(temp_val, u64_ty)
+                    }
                 }
             }
             _ => {

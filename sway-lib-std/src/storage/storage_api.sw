@@ -46,12 +46,20 @@ pub fn write<T>(slot: b256, offset: u64, value: T) {
     let padded_value = alloc::<u64>(number_of_slots * 32);
 
     // Read the values that currently exist in the affected storage slots.
+    use ::logging::*;
+    log(88888888888888);
+    log(offset_slot);
+    log(number_of_slots);
     let _ = __state_load_quad(offset_slot, padded_value, number_of_slots);
+
+    log(place_in_slot);
+    log(padded_value);
+    log(value);
 
     // Copy the value to be stored to `padded_value + offset`.
     padded_value.add::<u64>(place_in_slot).write::<T>(value);
 
-    use ::logging::*;
+    
     log(9999999999999);
     log(padded_value);
 

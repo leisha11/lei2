@@ -48,6 +48,9 @@ impl StorageAccess for Contract {
         storage.s.write(s);
     }
     #[storage(write)]fn set_boolean(boolean: bool) {
+        use std::logging::*;
+        log(3333333333333333);
+        log(boolean);
         storage.boolean.write(boolean);
     }
     #[storage(write)]fn set_int8(int8: u8) {

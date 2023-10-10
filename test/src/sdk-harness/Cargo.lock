@@ -991,11 +991,7 @@ checksum = "7277392b266383ef8396db7fdeb1e77b6c52fed775f5df15bb24f35b72156980"
 dependencies = [
  "curve25519-dalek",
  "ed25519",
-<<<<<<< HEAD
  "sha2",
-=======
- "sha2 0.10.7",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -1049,11 +1045,7 @@ checksum = "eecf8589574ce9b895052fa12d69af7a233f99e6107f5cb8dd1044f2a17bfdcb"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -1144,15 +1136,9 @@ dependencies = [
 
 [[package]]
 name = "fiat-crypto"
-<<<<<<< HEAD
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d0870c84016d4b481be5c9f323c24f65e31e901ae618f0e80f4308fb00de1d2d"
-=======
-version = "0.1.20"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e825f6987101665dea6ec934c09ec6d721de7bc1bf92248e1d5810c8cd636b77"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 
 [[package]]
 name = "fixed-hash"
@@ -1194,11 +1180,7 @@ dependencies = [
  "regex",
  "serde",
  "serde_json",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
  "thiserror",
 ]
 
@@ -1210,7 +1192,7 @@ checksum = "77ac38b692cf1d259c4576e96969ddc1b21880f3059744a730d1677b6f9fd4df"
 dependencies = [
  "bitflags 1.3.2",
  "serde",
- "strum 0.24.1",
+ "strum",
 ]
 
 [[package]]
@@ -1247,8 +1229,8 @@ dependencies = [
  "rand",
  "serde",
  "serde_json",
- "strum 0.24.1",
- "strum_macros 0.24.3",
+ "strum",
+ "strum_macros",
  "thiserror",
  "tokio",
  "tokio-stream",
@@ -1519,8 +1501,8 @@ dependencies = [
  "rand",
  "serde",
  "serde_json",
- "strum 0.24.1",
- "strum_macros 0.24.3",
+ "strum",
+ "strum_macros",
 ]
 
 [[package]]
@@ -1562,17 +1544,7 @@ dependencies = [
 
 [[package]]
 name = "fuels"
-<<<<<<< HEAD
-version = "0.45.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aa0d9fe01b4f234c07ef7d9e619ccb8d17e4a502af63f30a30a2097acab0dfdf"
-=======
-version = "0.46.0"
-<<<<<<< HEAD
-source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
-=======
->>>>>>> 13095ad08 (fix memory representation issues)
+version = "0.48.0"
 dependencies = [
  "fuel-core",
  "fuel-core-client",
@@ -1586,20 +1558,9 @@ dependencies = [
 
 [[package]]
 name = "fuels-accounts"
-<<<<<<< HEAD
-version = "0.45.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5b8d03d520ea383743f78af6909ac5a04c805ad4eb1f03d99c80b0d4679a44f6"
-=======
-version = "0.46.0"
-<<<<<<< HEAD
-source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
-=======
->>>>>>> 13095ad08 (fix memory representation issues)
+version = "0.48.0"
 dependencies = [
  "async-trait",
- "bytes",
  "chrono",
  "elliptic-curve",
  "eth-keystore",
@@ -1610,10 +1571,7 @@ dependencies = [
  "fuel-vm",
  "fuels-core",
  "hex",
- "itertools 0.11.0",
  "rand",
- "serde",
- "sha2",
  "tai64",
  "thiserror",
  "tokio",
@@ -1621,17 +1579,7 @@ dependencies = [
 
 [[package]]
 name = "fuels-code-gen"
-<<<<<<< HEAD
-version = "0.45.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a18b307990519c78c5c7661666a912c05915d1deed7bf4b577b50987fe97ae31"
-=======
-version = "0.46.0"
-<<<<<<< HEAD
-source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
-=======
->>>>>>> 13095ad08 (fix memory representation issues)
+version = "0.48.0"
 dependencies = [
  "Inflector",
  "fuel-abi-types",
@@ -1640,26 +1588,12 @@ dependencies = [
  "quote",
  "regex",
  "serde_json",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
 name = "fuels-core"
-<<<<<<< HEAD
-version = "0.45.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79566b388d8822c4c06aac60d9647dbb9393807cd5e6653cfa0c1630644da196"
-=======
-version = "0.46.0"
-<<<<<<< HEAD
-source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
-=======
->>>>>>> 13095ad08 (fix memory representation issues)
+version = "0.48.0"
 dependencies = [
  "bech32",
  "chrono",
@@ -1667,72 +1601,35 @@ dependencies = [
  "fuel-asm",
  "fuel-core-chain-config",
  "fuel-core-client",
+ "fuel-crypto",
  "fuel-tx",
  "fuel-types",
  "fuel-vm",
  "fuels-macros",
  "hex",
  "itertools 0.11.0",
- "proc-macro2",
- "regex",
  "serde",
  "serde_json",
-<<<<<<< HEAD
  "sha2",
- "strum",
- "strum_macros",
-=======
- "sha2 0.10.7",
- "strum 0.25.0",
- "strum_macros 0.25.2",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
  "thiserror",
  "uint",
 ]
 
 [[package]]
 name = "fuels-macros"
-<<<<<<< HEAD
-version = "0.45.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8c92232ef42b254a1649c6a6bfddd35b2c50f358b15e98e953eb82d69b397c57"
-=======
-version = "0.46.0"
-<<<<<<< HEAD
-source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
-=======
->>>>>>> 13095ad08 (fix memory representation issues)
+version = "0.48.0"
 dependencies = [
- "Inflector",
- "fuel-abi-types",
  "fuels-code-gen",
  "itertools 0.11.0",
  "proc-macro2",
  "quote",
  "rand",
- "regex",
- "serde_json",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
 name = "fuels-programs"
-<<<<<<< HEAD
-version = "0.45.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e1e4250bb73ff44cfdcd39f86c0e3163c11753e16583013fae698e9132400280"
-=======
-version = "0.46.0"
-<<<<<<< HEAD
-source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
-=======
->>>>>>> 13095ad08 (fix memory representation issues)
+version = "0.48.0"
 dependencies = [
  "async-trait",
  "bytes",
@@ -1742,44 +1639,19 @@ dependencies = [
  "fuel-types",
  "fuels-accounts",
  "fuels-core",
- "hex",
  "itertools 0.11.0",
- "proc-macro2",
  "rand",
- "regex",
- "serde",
  "serde_json",
-<<<<<<< HEAD
- "sha2",
- "strum",
- "strum_macros",
-=======
- "sha2 0.10.7",
- "strum 0.25.0",
- "strum_macros 0.25.2",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
- "thiserror",
  "tokio",
 ]
 
 [[package]]
 name = "fuels-test-helpers"
-<<<<<<< HEAD
-version = "0.45.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4df1a046adf1862f5b1844800abed842c6748abb2dc94c8e0df43473e96c3f4d"
-=======
-version = "0.46.0"
-<<<<<<< HEAD
-source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#c7081889f60478f1628d9263820618d40d16fe1b"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
-=======
->>>>>>> 13095ad08 (fix memory representation issues)
+version = "0.48.0"
 dependencies = [
  "fuel-core",
  "fuel-core-chain-config",
  "fuel-core-client",
- "fuel-core-types",
  "fuel-tx",
  "fuel-types",
  "fuels-accounts",
@@ -1858,11 +1730,7 @@ checksum = "89ca545a94061b6365f2c7355b4b32bd20df3ff95f02da9329b34ccc3bd6ee72"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -2315,11 +2183,7 @@ dependencies = [
  "ecdsa",
  "elliptic-curve",
  "once_cell",
-<<<<<<< HEAD
  "sha2",
-=======
- "sha2 0.10.7",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
  "signature",
 ]
 
@@ -2607,11 +2471,7 @@ checksum = "4359fd9c9171ec6e8c62926d6faaf553a8dc3f64e1507e76da7911b4f6a04405"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -2638,15 +2498,9 @@ dependencies = [
 
 [[package]]
 name = "platforms"
-<<<<<<< HEAD
 version = "3.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4503fa043bf02cee09a9582e9554b4c6403b2ef55e4612e96561d294419429f8"
-=======
-version = "3.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e3d7ddaed09e0eb771a79ab0fd64609ba0afb0a8366421957936ad14cbd13630"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 
 [[package]]
 name = "portpicker"
@@ -2755,11 +2609,7 @@ checksum = "440f724eba9f6996b75d63681b0a92b06947f1457076d503a4d2e2c8f56442b8"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -2896,15 +2746,9 @@ checksum = "dbb5fb1acd8a1a18b3dd5be62d25485eb770e05afb408a9627d14d451bae12da"
 
 [[package]]
 name = "reqwest"
-<<<<<<< HEAD
 version = "0.11.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3e9ad3fe7488d7e34558a2033d45a0c90b72d97b4f80705666fea71472e2e6a1"
-=======
-version = "0.11.19"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "20b9b67e2ca7dd9e9f9285b759de30ff538aab981abaaf7bc9bd90b84a0126c3"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 dependencies = [
  "base64 0.21.4",
  "bytes",
@@ -3228,22 +3072,15 @@ checksum = "b0293b4b29daaf487284529cc2f5675b8e57c61f70167ba415a463651fd6a918"
 
 [[package]]
 name = "serde"
-<<<<<<< HEAD
 version = "1.0.188"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf9e0fcba69a370eed61bcf2b728575f726b50b55cba78064753d708ddc7549e"
-=======
-version = "1.0.185"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "be9b6f69f1dfd54c3b568ffa45c310d6973a5e5148fd40cf515acaf38cf5bc31"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-<<<<<<< HEAD
 version = "1.0.188"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4eca7ac642d82aa35b60049a6eccb4be6be75e599bd2e9adb5f875a737654af2"
@@ -3251,28 +3088,13 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.33",
-=======
-version = "1.0.185"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dc59dfdcbad1437773485e0367fea4b090a2e0a16d9ffc46af47764536a298ec"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
 name = "serde_json"
-<<<<<<< HEAD
 version = "1.0.107"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6b420ce6e3d8bd882e9b243c6eed35dbc9a6110c9769e74b584e0d68d1f20c65"
-=======
-version = "1.0.105"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "693151e1ac27563d6dbcec9dee9fbd5da8539b20fa14ad3752b2e6d363ace360"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 dependencies = [
  "itoa",
  "ryu",
@@ -3358,11 +3180,7 @@ version = "2.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e1788eed21689f9cf370582dfc467ef36ed9c707f073528ddafa8d83e3b8500"
 dependencies = [
-<<<<<<< HEAD
  "digest",
-=======
- "digest 0.10.7",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
  "rand_core",
 ]
 
@@ -3450,14 +3268,8 @@ version = "0.24.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "063e6045c0e62079840579a7e47a355ae92f60eb74daaf156fb1e84ba164e63f"
 dependencies = [
- "strum_macros 0.24.3",
+ "strum_macros",
 ]
-
-[[package]]
-name = "strum"
-version = "0.25.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "290d54ea6f91c969195bdbcd7442c8c2a2ba87da8bf60a7ee86a235d4bc1e125"
 
 [[package]]
 name = "strum_macros"
@@ -3470,19 +3282,6 @@ dependencies = [
  "quote",
  "rustversion",
  "syn 1.0.109",
-]
-
-[[package]]
-name = "strum_macros"
-version = "0.25.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ad8d03b598d3d0fff69bf533ee3ef19b8eeb342729596df84bcc7e1f96ec4059"
-dependencies = [
- "heck",
- "proc-macro2",
- "quote",
- "rustversion",
- "syn 2.0.29",
 ]
 
 [[package]]
@@ -3504,15 +3303,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-<<<<<<< HEAD
 version = "2.0.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9caece70c63bfba29ec2fed841a09851b14a235c60010fa4de58089b6c025668"
-=======
-version = "2.0.29"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c324c494eba9d92503e6f1ef2e6df781e78f6a7705a0202d9801b198807d518a"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 dependencies = [
  "proc-macro2",
  "quote",
@@ -3573,22 +3366,15 @@ dependencies = [
 
 [[package]]
 name = "thiserror"
-<<<<<<< HEAD
 version = "1.0.48"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9d6d7a740b8a666a7e828dd00da9c0dc290dff53154ea77ac109281de90589b7"
-=======
-version = "1.0.47"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "97a802ec30afc17eee47b2855fc72e0c4cd62be9b4efe6591edde0ec5bd68d8f"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 dependencies = [
  "thiserror-impl",
 ]
 
 [[package]]
 name = "thiserror-impl"
-<<<<<<< HEAD
 version = "1.0.48"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49922ecae66cc8a249b77e68d1d0623c1b2c514f0060c27cdc68bd62a1219d35"
@@ -3596,15 +3382,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.33",
-=======
-version = "1.0.47"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6bb623b56e39ab7dcd4b1b98bb6c8f8d907ed255b18de254088016b27a8ee19b"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -3687,11 +3464,7 @@ checksum = "630bdcf245f78637c13ec01ffae6187cca34625e8c63150d424b59e55af2675e"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -3837,11 +3610,7 @@ checksum = "5f4f31f56159e98206da9efd823404b79b6ef3143b4a7ab76e67b1751b25a4ab"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
 
 [[package]]
@@ -4006,11 +3775,7 @@ dependencies = [
  "once_cell",
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
  "wasm-bindgen-shared",
 ]
 
@@ -4044,11 +3809,7 @@ checksum = "54681b18a46765f095758388f2d0cf16eb8d4169b639ab575a8f5693af210c7b"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
  "wasm-bindgen-backend",
  "wasm-bindgen-shared",
 ]
@@ -4091,15 +3852,6 @@ dependencies = [
 [[package]]
 name = "webpki-roots"
 version = "0.25.2"
-<<<<<<< HEAD
-=======
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "14247bb57be4f377dfb94c72830b8ce8fc6beac03cf4bf7b9732eadd414123fc"
-
-[[package]]
-name = "which"
-version = "4.4.0"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "14247bb57be4f377dfb94c72830b8ce8fc6beac03cf4bf7b9732eadd414123fc"
 
@@ -4214,15 +3966,9 @@ checksum = "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538"
 
 [[package]]
 name = "winnow"
-<<<<<<< HEAD
 version = "0.5.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7c2e3184b9c4e92ad5167ca73039d0c42476302ab603e2fec4487511f38ccefc"
-=======
-version = "0.5.14"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d09770118a7eb1ccaf4a594a221334119a44a814fcb0d31c5b85e83e97227a97"
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 dependencies = [
  "memchr",
 ]
@@ -4269,9 +4015,5 @@ checksum = "ce36e65b0d2999d2aafac989fb249189a141aee1f53c612c1f37d72631959f69"
 dependencies = [
  "proc-macro2",
  "quote",
-<<<<<<< HEAD
  "syn 2.0.33",
-=======
- "syn 2.0.29",
->>>>>>> 9dca3bd75 (Represent small values as single bytes)
 ]
