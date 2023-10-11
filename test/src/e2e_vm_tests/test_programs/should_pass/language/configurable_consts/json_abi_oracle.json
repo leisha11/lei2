@@ -7,7 +7,7 @@
         "typeArguments": null
       },
       "name": "C0",
-      "offset": 7828
+      "offset": 3668
     },
     {
       "configurableType": {
@@ -16,7 +16,7 @@
         "typeArguments": null
       },
       "name": "C1",
-      "offset": 3428
+      "offset": 3460
     },
     {
       "configurableType": {
@@ -25,7 +25,7 @@
         "typeArguments": null
       },
       "name": "C2",
-      "offset": 3444
+      "offset": 3476
     },
     {
       "configurableType": {
@@ -34,7 +34,7 @@
         "typeArguments": []
       },
       "name": "C3",
-      "offset": 7852
+      "offset": 3700
     },
     {
       "configurableType": {
@@ -43,7 +43,7 @@
         "typeArguments": []
       },
       "name": "C4",
-      "offset": 7652
+      "offset": 3548
     },
     {
       "configurableType": {
@@ -52,7 +52,7 @@
         "typeArguments": []
       },
       "name": "C5",
-      "offset": 7868
+      "offset": 3732
     },
     {
       "configurableType": {
@@ -61,7 +61,7 @@
         "typeArguments": null
       },
       "name": "C6",
-      "offset": 7684
+      "offset": 3588
     },
     {
       "configurableType": {
@@ -70,7 +70,7 @@
         "typeArguments": null
       },
       "name": "C7",
-      "offset": 7700
+      "offset": 3604
     },
     {
       "configurableType": {
@@ -79,7 +79,7 @@
         "typeArguments": null
       },
       "name": "C9",
-      "offset": 7748
+      "offset": 3652
     }
   ],
   "functions": [
