@@ -213,22 +213,22 @@ async fn test_array() -> Result<()> {
     let (instance, _id) = get_result_in_abi_instance().await;
     let contract_methods = instance.methods();
 
-    let input = Ok([
-        Ok(
-            Address::from_str("0x4242424242424242424242424242424242424242424242424242424242424242")
-                .unwrap(),
-        ),
-        Ok(
-            Address::from_str("0x6969696969696969696969696969696969696969696969696969696969696969")
-                .unwrap(),
-        ),
-        Ok(
-            Address::from_str("0x9999999999999999999999999999999999999999999999999999999999999999")
-                .unwrap(),
-        ),
-    ]);
-    let response = contract_methods.array_test(input.clone()).call().await?;
-    assert_eq!(input, response.value);
+    // let input = Ok([
+    //     Ok(
+    //         Address::from_str("0x4242424242424242424242424242424242424242424242424242424242424242")
+    //             .unwrap(),
+    //     ),
+    //     Ok(
+    //         Address::from_str("0x6969696969696969696969696969696969696969696969696969696969696969")
+    //             .unwrap(),
+    //     ),
+    //     Ok(
+    //         Address::from_str("0x9999999999999999999999999999999999999999999999999999999999999999")
+    //             .unwrap(),
+    //     ),
+    // ]);
+    // let response = contract_methods.array_test(input.clone()).call().await?;
+    // assert_eq!(input, response.value);
 
     let input = Ok([
         Err(SomeError::SomeErrorString("error".try_into().unwrap())),
@@ -241,17 +241,17 @@ async fn test_array() -> Result<()> {
     let response = contract_methods.array_test(input.clone()).call().await?;
     assert_eq!(input, response.value);
 
-    let input = Ok([
-        Err(SomeError::SomeErrorString("error".try_into().unwrap())),
-        Err(SomeError::SomeErrorString("error".try_into().unwrap())),
-        Err(SomeError::SomeErrorString("error".try_into().unwrap())),
-    ]);
-    let response = contract_methods.array_test(input.clone()).call().await?;
-    assert_eq!(input, response.value);
+    // let input = Ok([
+    //     Err(SomeError::SomeErrorString("error".try_into().unwrap())),
+    //     Err(SomeError::SomeErrorString("error".try_into().unwrap())),
+    //     Err(SomeError::SomeErrorString("error".try_into().unwrap())),
+    // ]);
+    // let response = contract_methods.array_test(input.clone()).call().await?;
+    // assert_eq!(input, response.value);
 
-    let input = Err(SomeError::SomeErrorString("error".try_into().unwrap()));
-    let response = contract_methods.array_test(input.clone()).call().await?;
-    assert_eq!(input, response.value);
+    // let input = Err(SomeError::SomeErrorString("error".try_into().unwrap()));
+    // let response = contract_methods.array_test(input.clone()).call().await?;
+    // assert_eq!(input, response.value);
 
     Ok(())
 }

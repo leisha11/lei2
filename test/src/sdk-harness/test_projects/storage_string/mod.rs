@@ -65,7 +65,7 @@ async fn stores_long_string() {
         0
     );
 
-    let tx_params = TxParameters::default().set_gas_limit(12_000_000);
+    let tx_params = TxParameters::default().with_gas_limit(12_000_000);
     instance
         .methods()
         .store_string(input.into())

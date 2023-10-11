@@ -1545,6 +1545,7 @@ dependencies = [
 [[package]]
 name = "fuels"
 version = "0.48.0"
+source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#e06ad8f0a6694a1f6c98fc042364b3042d4b2da5"
 dependencies = [
  "fuel-core",
  "fuel-core-client",
@@ -1559,6 +1560,7 @@ dependencies = [
 [[package]]
 name = "fuels-accounts"
 version = "0.48.0"
+source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#e06ad8f0a6694a1f6c98fc042364b3042d4b2da5"
 dependencies = [
  "async-trait",
  "chrono",
@@ -1580,6 +1582,7 @@ dependencies = [
 [[package]]
 name = "fuels-code-gen"
 version = "0.48.0"
+source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#e06ad8f0a6694a1f6c98fc042364b3042d4b2da5"
 dependencies = [
  "Inflector",
  "fuel-abi-types",
@@ -1594,6 +1597,7 @@ dependencies = [
 [[package]]
 name = "fuels-core"
 version = "0.48.0"
+source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#e06ad8f0a6694a1f6c98fc042364b3042d4b2da5"
 dependencies = [
  "bech32",
  "chrono",
@@ -1618,6 +1622,7 @@ dependencies = [
 [[package]]
 name = "fuels-macros"
 version = "0.48.0"
+source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#e06ad8f0a6694a1f6c98fc042364b3042d4b2da5"
 dependencies = [
  "fuels-code-gen",
  "itertools 0.11.0",
@@ -1630,6 +1635,7 @@ dependencies = [
 [[package]]
 name = "fuels-programs"
 version = "0.48.0"
+source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#e06ad8f0a6694a1f6c98fc042364b3042d4b2da5"
 dependencies = [
  "async-trait",
  "bytes",
@@ -1648,6 +1654,7 @@ dependencies = [
 [[package]]
 name = "fuels-test-helpers"
 version = "0.48.0"
+source = "git+https://github.com/FuelLabs/fuels-rs.git?branch=IGI-111/int-mem-repr#e06ad8f0a6694a1f6c98fc042364b3042d4b2da5"
 dependencies = [
  "fuel-core",
  "fuel-core-chain-config",

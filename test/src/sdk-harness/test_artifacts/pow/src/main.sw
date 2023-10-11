@@ -23,8 +23,6 @@ impl PowTest for Contract {
     }
 
     fn u8_overflow(a: u8, b: u8) -> u8 {
-        log(a);
-        log(b);
         a.pow(b)
     }
 }

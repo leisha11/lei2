@@ -10,11 +10,12 @@ async fn test_storage_init_instance() -> TestStorageInitContract<WalletUnlocked>
     let wallet = launch_provider_and_get_wallet().await;
     let id = Contract::load_from(
         "test_projects/storage_init/out/debug/storage_init.bin",
-        LoadConfiguration::default().set_storage_configuration(
-            StorageConfiguration::load_from(
-                "test_projects/storage_init/out/debug/storage_init-storage_slots.json",
-            )
-            .unwrap(),
+        LoadConfiguration::default().with_storage_configuration(
+            StorageConfiguration::default()
+                .add_slot_overrides_from_file(
+                    "test_projects/storage_init/out/debug/storage_init-storage_slots.json",
+                )
+                .unwrap(),
         ),
     )
     .unwrap()
