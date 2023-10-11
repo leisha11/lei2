@@ -1159,12 +1159,6 @@
       "type": "u8",
       "typeId": 26,
       "typeParameters": null
-    },
-    {
-      "components": null,
-      "type": "u64",
-      "typeId": 9,
-      "typeParameters": null
     }
   ]
 }
