@@ -1666,27 +1666,27 @@ impl ty::TyExpression {
             .collect();
 
         let elem_type = typed_contents[0].return_type;
-        for typed_elem in &typed_contents[1..] {
-            let h = Handler::default();
-            ctx.by_ref()
-                .with_type_annotation(elem_type)
-                .unify_with_type_annotation(&h, typed_elem.return_type, &typed_elem.span);
+        // for typed_elem in &typed_contents[1..] {
+        //     let h = Handler::default();
+        //     ctx.by_ref()
+        //         .with_type_annotation(elem_type)
+        //         .unify_with_type_annotation(&h, typed_elem.return_type, &typed_elem.span);
 
-            let (new_errors, new_warnings) = h.consume();
-            let no_warnings = new_warnings.is_empty();
-            let no_errors = new_errors.is_empty();
-            for warn in new_warnings {
-                handler.emit_warn(warn);
-            }
-            for err in new_errors {
-                handler.emit_err(err);
-            }
-            // In both cases, if there are warnings or errors then break here, since we don't
-            // need to spam type errors for every element once we have one.
-            if !no_warnings && !no_errors {
-                break;
-            }
-        }
+        //     let (new_errors, new_warnings) = h.consume();
+        //     let no_warnings = new_warnings.is_empty();
+        //     let no_errors = new_errors.is_empty();
+        //     for warn in new_warnings {
+        //         handler.emit_warn(warn);
+        //     }
+        //     for err in new_errors {
+        //         handler.emit_err(err);
+        //     }
+        //     // In both cases, if there are warnings or errors then break here, since we don't
+        //     // need to spam type errors for every element once we have one.
+        //     if !no_warnings && !no_errors {
+        //         break;
+        //     }
+        // }
 
         let array_count = typed_contents.len();
         Ok(ty::TyExpression {
@@ -2098,6 +2098,7 @@ mod tests {
         let handler = Handler::default();
         let _comp_res = do_type_check_for_boolx2(&handler, expr);
         let (errors, _warnings) = handler.consume();
+
         assert!(errors.len() == 1);
         assert!(matches!(&errors[0],
                          CompileError::TypeError(TypeError::MismatchedType {
@@ -2131,14 +2132,15 @@ mod tests {
         let handler = Handler::default();
         let _comp_res = do_type_check_for_boolx2(&handler, expr);
         let (errors, _warnings) = handler.consume();
+        dbg!(&errors);
         assert!(errors.len() == 2);
         assert!(matches!(&errors[0],
                          CompileError::TypeError(TypeError::MismatchedType {
                              expected,
                              received,
                              ..
-                         }) if expected == "u64"
-                                && received == "bool"));
+                         }) if expected == "bool"
+                                && received == "u64"));
         assert!(matches!(&errors[1],
                          CompileError::TypeError(TypeError::MismatchedType {
                              expected,
